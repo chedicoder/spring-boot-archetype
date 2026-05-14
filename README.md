@@ -29,8 +29,9 @@ mvn archetype:generate \
   -DarchetypeArtifactId=spring-boot-java-archetype \
   -DarchetypeVersion=0.0.1-SNAPSHOT \
   -DgroupId=com.example.demo \
-  -DartifactId=my-spring-api \
+  -DartifactId=my-api \
   -Dversion=1.0.0 \
+  -DjavaVersion=17 \
   -DinteractiveMode=false
 ```
 
