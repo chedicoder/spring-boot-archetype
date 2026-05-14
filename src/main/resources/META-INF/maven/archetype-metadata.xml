@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor
+    name="spring-boot-java-rest-api"
+    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">
+
+    <fileSets>
+
+        <!-- MAIN JAVA -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
+        <!-- MAIN RESOURCES -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.yml</include>
+                <include>**/*.yaml</include>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+
+        <!-- TEST JAVA -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
+        <!-- MAVEN WRAPPER PROPERTIES -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>.mvn/wrapper</directory>
+            <includes>
+                <include>**/*.properties</include>
+            </includes>
+        </fileSet>
+
+        <!-- MAVEN WRAPPER JAR -->
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>.mvn/wrapper</directory>
+            <includes>
+                <include>**/*.jar</include>
+            </includes>
+        </fileSet>
+
+        <!-- ROOT FILES -->
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>mvnw</include>
+                <include>mvnw.cmd</include>
+                <include>.gitignore</include>
+            </includes>
+        </fileSet>
+
+        <!-- FILTERED ROOT FILES -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>README.md</include>
+                <include>Dockerfile</include>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+
+    </fileSets>
+
+</archetype-descriptor>
