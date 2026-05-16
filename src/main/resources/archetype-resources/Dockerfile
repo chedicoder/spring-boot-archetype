@@ -1,8 +1,17 @@
-FROM fabric8/java-alpine-openjdk8-jre
+FROM openjdk:17-jdk-alpine
+
 VOLUME /tmp
-ADD target/${artifactId}-${version}.jar app.jar
-RUN sh -c 'touch /app.jar'
-ENV JAVA_OPTS="-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8787,suspend=n"
-ENV SPRING_PROFILES_ACTIVE "docker"
-EXPOSE 8080 8787
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=$SPRING_PROFILES_ACTIVE -jar /app.jar" ]
+
+COPY /target/libs /usr/local/pod/libs
+ARG JAR_FILE=/target/contract-service.jar
+COPY ${JAR_FILE} /usr/local/pod/
+COPY ./trusted-certs/ca.crt /tmp
+
+# Import the certificate into the Java truststore
+RUN keytool -importcert \
+    -cacerts \
+    -file /tmp/ca.crt \
+    -alias msic-dev-root-cert \
+    -storepass changeit -noprompt
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Duser.timezone=Africa/Casablanca","-jar","/usr/local/pod/contract-service.jar"]
+
